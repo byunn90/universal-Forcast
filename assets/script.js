@@ -1,4 +1,5 @@
 console.log("hi");
+const buttonClick = document.querySelector(".btn");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
 
@@ -22,6 +23,12 @@ function getGeolocation() {
       getWeatherForcast(lat, lon);
     });
 }
-
+function hello() {
+  console.log("Hello");
+}
 // getWeatherForcast();
 getGeolocation();
+
+//Event Listeners
+// Test The button
+buttonClick.addEventListener("click", hello);
