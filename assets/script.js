@@ -1,7 +1,15 @@
-console.log("hi");
 const buttonClick = document.querySelector(".btn");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
+
+function Objectives() {
+  /*
+  we need a user input for the searching city
+  we need to turn the weather temperature too degrees
+  we need to show the weather and country 
+  
+  */
+}
 
 function getWeatherForcast(lat, lon) {
   const myApiKey = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=54f233828acf58994eefa05b9027dd89`;
