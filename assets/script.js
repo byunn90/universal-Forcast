@@ -1,5 +1,5 @@
 const buttonClick = document.getElementById("btn-control");
-const inputText = document.querySelector(".form-control");
+// const inputText = document.querySelector(".form-control");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
 
@@ -14,10 +14,13 @@ function Objectives() {
 }
 
 const buttonClickHandler = function (event) {
+  event.preventDefault();
   var language = event.target.getAttribute("form-control");
 
   if (language) {
     getGeolocation(language);
+    language.inputText;
+    console.log("Hello");
   }
 };
 
@@ -50,4 +53,5 @@ function hello(e) {
 getGeolocation();
 //Event Listeners
 // Test The button
+buttonClickHandler();
 buttonClick.addEventListener("click", hello);

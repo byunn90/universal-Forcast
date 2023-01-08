@@ -21,8 +21,9 @@
   flex-direction: column;
 }
 
-.instructional-message {
+.instructional-message,
+h1 {
   display: flex;
   justify-content: center;
-  font-size: ;
+  font-size: 20px;
 }
