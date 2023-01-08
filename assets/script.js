@@ -37,7 +37,12 @@ const getWeatherForcast = function (lat, lon) {
         container.insertAdjacentHTML(
           "beforeend",
           `
-          <h1>${(+day.main.temp - 273.15).toFixed(1)}</h1>  
+          <div class="country-data">
+          <h1 class="dates">${day.dt_txt.trim()}</h1>
+          <h2 class="city-country-temps">${(+day.main.temp - 273.15).toFixed(
+            1
+          )}</h2>  
+          </div>
         `
         );
       });
