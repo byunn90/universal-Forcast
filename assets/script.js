@@ -27,19 +27,24 @@ const formSubmitHandler = function (e) {
 };
 
 const getWeatherForcast = function (lat, lon) {
+  const days = 5;
   const myApiKey = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=54f233828acf58994eefa05b9027dd89`;
   console.log(lat, lon);
   fetch(myApiKey)
     .then((response) => response.json())
     .then((response) => {
+      console.log(response);
       response.list.forEach((day, i) => {
         if (i >= 5) return;
+
         console.log(day);
         let date = day.dt_txt.substring(0, 10);
         console.log(date[9]);
+        console.log();
         container.insertAdjacentHTML(
           "beforeend",
           `
+          </div>
           <div class="country-data">
           <img class="country-img" src="http://openweathermap.org/img/wn/${
             day.weather[0].icon
@@ -54,8 +59,6 @@ const getWeatherForcast = function (lat, lon) {
         `
         );
         // }
-
-        console.log(day.weather.icon);
       });
       console.log(response);
     });
@@ -82,3 +85,16 @@ const getGeolocation = function (user) {
 // formSubmitHandler();
 // buttonClick.addEventListener("click", idkidk);
 buttonClick.addEventListener("click", formSubmitHandler);
+
+// function checking() {
+//   const lat = -37.8142176;
+//   const lon = 144.9631608;
+//   const days = 6;
+//   const myApiKey = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=${days}&appid=54f233828acf58994eefa05b9027dd89`;
+//   fetch(myApiKey)
+//     .then((response) => response.json())
+//     .then((response) => {
+//       console.log(response);
+//     });
+// }
+// checking();

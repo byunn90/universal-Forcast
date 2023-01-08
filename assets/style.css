@@ -30,8 +30,8 @@ h1 {
 .container-block {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 30px;
+  /* flex-wrap: wrap; */
 }
 .country-data {
   display: flex;
@@ -42,22 +42,42 @@ h1 {
   border-radius: 5px;
   color: white;
   width: 25%;
+
   /* font-size: px; */
+}
+.country-img {
+  padding: 10px;
 }
 .dates {
   display: flex;
+  padding: 10px;
   font-size: 14px;
+  text-align: center;
   justify-content: flex-start;
 }
 
 .city-country-temps {
+  text-align: center;
   font-size: 10px;
+  padding: 5px;
+}
+
+.dates {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
 
 .wind-speed {
   font-size: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
 
 .humidity {
   font-size: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
