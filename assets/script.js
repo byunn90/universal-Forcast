@@ -34,17 +34,28 @@ const getWeatherForcast = function (lat, lon) {
     .then((response) => {
       response.list.forEach((day, i) => {
         if (i >= 5) return;
+        console.log(day);
+        let date = day.dt_txt.substring(0, 10);
+        console.log(date[9]);
         container.insertAdjacentHTML(
           "beforeend",
           `
           <div class="country-data">
-          <h1 class="dates">${day.dt_txt.trim()}</h1>
-          <h2 class="city-country-temps">${(+day.main.temp - 273.15).toFixed(
-            1
-          )}</h2>  
+          <img class="country-img" src="http://openweathermap.org/img/wn/${
+            day.weather[0].icon
+          }.png"></img>
+          <h1 class="dates">${day.dt_txt.substring(0, 10)}</h1>
+          <h2 class="city-country-temps">temp: ${(
+            +day.main.temp - 273.15
+          ).toFixed(1)}°C</h2>  
+          <h2 class="wind-speed">Wind: 6</h2>
+          <h2 class="humidity">Humidity: 6</h2>
           </div>
         `
         );
+        // }
+
+        console.log(day.weather.icon);
       });
       console.log(response);
     });

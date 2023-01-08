@@ -36,15 +36,28 @@ h1 {
 .country-data {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   border-style: solid;
-  background-color: black;
+  background-color: #0081c9;
+  border-radius: 5px;
   color: white;
+  width: 25%;
   /* font-size: px; */
 }
 .dates {
+  display: flex;
   font-size: 14px;
+  justify-content: flex-start;
 }
 
 .city-country-temps {
+  font-size: 10px;
+}
+
+.wind-speed {
+  font-size: 10px;
+}
+
+.humidity {
   font-size: 10px;
 }
