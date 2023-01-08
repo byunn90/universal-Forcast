@@ -20,3 +20,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.instructional-message {
+  display: flex;
+  justify-content: center;
+  font-size: ;
+}

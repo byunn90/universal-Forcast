@@ -1,4 +1,5 @@
 const buttonClick = document.getElementById("btn-control");
+const inputText = document.querySelector(".form-control");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
 
@@ -11,6 +12,14 @@ function Objectives() {
   
   */
 }
+
+const buttonClickHandler = function (event) {
+  var language = event.target.getAttribute("form-control");
+
+  if (language) {
+    getGeolocation(language);
+  }
+};
 
 function getWeatherForcast(lat, lon) {
   const myApiKey = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=54f233828acf58994eefa05b9027dd89`;
