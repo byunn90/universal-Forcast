@@ -1,5 +1,6 @@
 const buttonClick = document.getElementById("btn-control");
-// const inputText = document.querySelector(".form-control");
+const textBoxAreaHandler = document.getElementById("text-box");
+const container = document.querySelector(".container-block");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
 
@@ -13,45 +14,55 @@ function Objectives() {
   */
 }
 
-const buttonClickHandler = function (event) {
-  event.preventDefault();
-  var language = event.target.getAttribute("form-control");
-
-  if (language) {
-    getGeolocation(language);
-    language.inputText;
-    console.log("Hello");
+const formSubmitHandler = function (e) {
+  let inputTextContent = document.getElementById("text-box");
+  e.preventDefault();
+  container.innerHTML = "";
+  if (inputTextContent.value === "") {
+    return;
   }
+  let language = inputTextContent.value;
+  getGeolocation(language);
+  console.log(language);
 };
 
-function getWeatherForcast(lat, lon) {
+const getWeatherForcast = function (lat, lon) {
   const myApiKey = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=54f233828acf58994eefa05b9027dd89`;
   console.log(lat, lon);
   fetch(myApiKey)
     .then((response) => response.json())
-    .then((response) => console.log(response));
-}
+    .then((response) => {
+      response.list.forEach((day, i) => {
+        if (i >= 5) return;
+        container.insertAdjacentHTML(
+          "beforeend",
+          `
+          <h1>${(+day.main.temp - 273.15).toFixed(1)}</h1>  
+        `
+        );
+      });
+      console.log(response);
+    });
+};
 
-function getGeolocation() {
-  const cityName = "paris";
-  const getMyLatLong = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=54f233828acf58994eefa05b9027dd89`;
+const getGeolocation = function (user) {
+  const getMyLatLong = `http://api.openweathermap.org/geo/1.0/direct?q=${user}&limit=1&appid=54f233828acf58994eefa05b9027dd89`;
 
   fetch(getMyLatLong)
     .then((response) => response.json())
     .then((response) => {
-      const lat = response[0].lat;
-      const lon = response[0].lon;
-      getWeatherForcast(lat, lon);
+      if (response) {
+        const lat = response[0].lat;
+        const lon = response[0].lon;
+        getWeatherForcast(lat, lon);
+      }
     });
-}
-function hello(e) {
-  e.preventDefault();
-  console.log("Hello");
-  console.log("welcome");
-}
+};
+
 // getWeatherForcast();
-getGeolocation();
+
 //Event Listeners
 // Test The button
-buttonClickHandler();
-buttonClick.addEventListener("click", hello);
+// formSubmitHandler();
+// buttonClick.addEventListener("click", idkidk);
+buttonClick.addEventListener("click", formSubmitHandler);
