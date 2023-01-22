@@ -31,6 +31,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 30px;
+  width: 40%;
   /* flex-wrap: wrap; */
 }
 .country-data {
