@@ -4,9 +4,6 @@ const container = document.querySelector(".container-block");
 const container2 = document.querySelector(".container");
 const unOrderList = document.querySelector("first-data-box");
 
-// const mycords = navigator.geolocation;
-// console.log(mycords);
-
 function Objectives() {
   /*
   we need a user input for the searching city
@@ -37,7 +34,6 @@ const formSubmitHandler = function (e) {
   container2.classList.remove("hidden");
 };
 const getWeatherForcast = function (lat, lon) {
-  const days = 5;
   const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
   console.log(lat, lon);
   fetch(myApiKey)
@@ -45,6 +41,7 @@ const getWeatherForcast = function (lat, lon) {
     .then((response) => {
       // Create Elements
       response.daily.forEach((day, i) => {
+        const date = new Date(day.dt * 1e3);
         if (i >= 1) return;
         container2.insertAdjacentHTML(
           "beforeend",
@@ -54,7 +51,7 @@ const getWeatherForcast = function (lat, lon) {
           class="country-img"
           src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png"
           ></img>
-          
+          <h1 class="dates">${date.toString().substring(0, 16)}</h1>
           <h2 class="city-country-temps">
           temp: ${(day.feels_like.day - 273.15).toFixed(1)}°C
           </h2>
@@ -65,6 +62,7 @@ const getWeatherForcast = function (lat, lon) {
           </div>
           `
         );
+        console.log(day);
       });
 
       response.daily.forEach((day, i) => {
