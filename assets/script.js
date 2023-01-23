@@ -1,6 +1,7 @@
 const buttonClick = document.getElementById("btn-control");
 const textBoxAreaHandler = document.getElementById("text-box");
 const container = document.querySelector(".container-block");
+const container2 = document.querySelector(".first-data-box");
 // const mycords = navigator.geolocation;
 // console.log(mycords);
 
@@ -17,7 +18,6 @@ function Objectives() {
   
   */
 }
-
 const formSubmitHandler = function (e) {
   let inputTextContent = document.getElementById("text-box");
   e.preventDefault();
@@ -26,6 +26,8 @@ const formSubmitHandler = function (e) {
     return;
   }
   let language = inputTextContent.value;
+  document.body.style.backgroundImage =
+    "url('https://source.unsplash.com/1600x900/?" + language + "')";
   getGeolocation(language);
   console.log(language);
 };
@@ -38,23 +40,46 @@ const getWeatherForcast = function (lat, lon) {
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
+      // Create Elements
+
+      const dateData = document.createElement("li");
+      const weatherIcon = response.daily[0].weather[0].icon;
+      const firstDataTemperature = document.createElement("li");
+      const windData = document.createElement("li");
+      const humidityData = document.createElement("li");
+      const currentIcon = document.createElement("img");
+      // Text and Img
+      currentIcon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${weatherIcon}.png`
+      );
+      console.log(response.daily[0].weather[0].icon);
+      firstDataTemperature.textContent =
+        "🌡: " + (response.daily[0].temp.day - 273.15).toFixed(1) + "°C";
+      humidityData.textContent = response.daily[0].humidity + "";
+      windData.textContent = "🌫: " + response.daily[0].wind_speed + "";
+      // Appends
+      container2.appendChild(currentIcon);
+      container2.appendChild(firstDataTemperature);
+      container2.appendChild(windData);
+      container2.appendChild(humidityData);
       response.daily.forEach((day, i) => {
         if (i >= 5) return;
         const date = new Date(day.dt * 1e3);
-        console.log(date);
+        // console.log(date);
         console.log(day);
-        // let date = day.dt_txt.substring(0, 10);
-        // console.log(date[9]);
-        console.log(date);
+
+        // console.log(date);
         container.insertAdjacentHTML(
           "beforeend",
           `
-          </div>
+      
+       
           <div class="country-data">
           <img class="country-img" src="http://openweathermap.org/img/wn/${
             day.weather[0].icon
           }.png"></img>
-          <h1 class="dates">${date}</h1>
+          <h1 class="dates">${date.toString().substring(0, 16)}</h1>
           <h2 class="city-country-temps">temp: ${(
             day.feels_like.day - 273.15
           ).toFixed(1)}°C</h2>  
@@ -127,12 +152,11 @@ const checkingTwo = function () {
       // console.log(res.daily[4].dt);
       res.daily.forEach((res, i) => {
         // let dategosh = res.dt;
-
         // console.log(date);
         // console.log(i);
-        const date = new Date(res.dt * 1e3);
-        console.log(date);
-        console.log(res.feels_like.day);
+        // const date = new Date(res.dt * 1e3);
+        // console.log(date.toString().substring(0, 16));
+        // console.log(res.feels_like.day);
       });
     });
 };
