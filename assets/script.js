@@ -68,7 +68,7 @@ const formSubmitHandler = function (e) {
 // }
 
 const getWeatherForcast = function (lat, lon) {
-  const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
+  const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=7fe7d4a1f624f1850bb25c5e31c57e02`;
   console.log(lat, lon);
   language = inputTextContent.value;
   fetch(myApiKey)
@@ -143,20 +143,20 @@ function getGeolocation(user) {
 }
 
 buttonClick.addEventListener("click", formSubmitHandler);
-const checkingTwo = function () {
-  const lat = -37.8142176;
-  const lon = 144.9631608;
-  const days = 6;
-  myApi = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
+// const checkingTwo = function () {
+//   const lat = -37.8142176;
+//   const lon = 144.9631608;
+//   const days = 6;
+//   myApi = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
 
-  fetch(myApi)
-    .then((res) => res.json())
-    .then((res) => {
-      let newThing = Date.now(res.daily[2].dt);
-      newThing = Math.round(Date.now(res.daily[0].dt) / 1000);
-      newThing = new Date().getTime() / 1000;
-      console.log(newThing);
-      console.log(res);
-    });
-};
-checkingTwo();
+//   fetch(myApi)
+//     .then((res) => res.json())
+//     .then((res) => {
+//       let newThing = Date.now(res.daily[2].dt);
+//       newThing = Math.round(Date.now(res.daily[0].dt) / 1000);
+//       newThing = new Date().getTime() / 1000;
+//       console.log(newThing);
+//       console.log(res);
+//     });
+// };
+// checkingTwo();
