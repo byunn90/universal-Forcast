@@ -2,6 +2,7 @@ const buttonClick = document.getElementById("btn-control");
 // const textBoxAreaHandler = document.getElementById("text-box");
 const container = document.querySelector(".container-block");
 const container2 = document.querySelector(".container");
+const hiddenClassStorage = document.querySelector(".hidden");
 const unOrderList = document.querySelector("first-data-box");
 const searchHistory = document.querySelector(".history-List");
 let inputTextContent = document.getElementById("text-box");
@@ -29,7 +30,11 @@ const formSubmitHandler = function (e) {
     "url('https://source.unsplash.com/2560x1440/?" + language + "')";
   getGeolocation(language);
   mainContainer.innerHTML = "";
+  // Hidden Classes
   container2.classList.remove("hidden");
+  hiddenClassStorage.classList.remove("hidden");
+
+  //
   const newArray = JSON.parse(localStorage.getItem("Searched History")) || [];
   newArray.push(language);
   const storage = inputTextContent.value;
@@ -42,6 +47,7 @@ const formSubmitHandler = function (e) {
   searchHistory.innerHTML = "";
   // Refactor this code Please
   // Make functions
+
   for (let index = 0; index < storageArray.length; index++) {
     console.log(storageArray[index]);
     let li = document.createElement("button");
@@ -56,12 +62,10 @@ const formSubmitHandler = function (e) {
 //   historyButtons[index].addEventListener("click", helloworld);
 //   // getGeolocation(historyButtons[index].textContent)
 // }
-// function helloworld() {
+// function helloworld(userInput) {
 //   console.log("hi");
-//   getGeolocation(this.innerHTML);
+//   getGeolocation(userInput);
 // }
-
-const localStorageF = function () {};
 
 const getWeatherForcast = function (lat, lon) {
   const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
@@ -139,7 +143,6 @@ function getGeolocation(user) {
 }
 
 buttonClick.addEventListener("click", formSubmitHandler);
-localStorageF();
 const checkingTwo = function () {
   const lat = -37.8142176;
   const lon = 144.9631608;
