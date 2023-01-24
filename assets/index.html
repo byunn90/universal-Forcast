@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Weather Forcast</title>
+  </head>
+  <body>
+    <header class="weather-title">Weather Forcast</header>
+    <div class="instructional-message">
+      <h1>Type In a city in the search bar</h1>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <form class="d-flex" role="search">
+        <input
+          id="text-box"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search City"
+          aria-label="Search"
+          input
+        />
+        <button
+          id="btn-control"
+          class="btn btn-outline-success btn-md w-35 p-2"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </nav>
+    <div class="history-List hidden"></div>
+
+    <div class="container"></div>
+
+    <div class="container-block"></div>
+  </body>
+  <script src="./script.js"></script>
+</html>

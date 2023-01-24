@@ -1,0 +1,160 @@
+body {
+  background: #5B8FB9;
+   font-family: 'Open Sans', sans-serif;
+  background-image: url('https://source.unsplash.com/2560x1440/?landscape')");
+
+}
+.input-group {
+  display: flexbox;
+}
+.weather-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 30px;
+  color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    /* margin: 1em; */
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.instructional-message,
+h1 {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+.container-block {
+  display: flex;
+  justify-content: center;
+  /* width: 40%;  */
+  /* flex-wrap: wrap;  */
+} 
+.country-data-3{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #000000d0;
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 10%;
+  max-width: 420px;
+  margin: 1em;
+}
+.country-data-2 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start;  */
+  justify-content: center;
+  background: #000000d0;
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 70%;
+  max-width: 420px;
+  margin: 1em;
+}
+
+
+
+.country-img {
+  padding: 10px;
+}
+.dates {
+  display: flex;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  justify-content: flex-start;
+}
+
+.city-country-temps {
+  text-align: center;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.dates {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.wind-speed {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.humidity {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* .first-data-box {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background-color: #7286d3;
+  border-style: groove;
+  padding-left: 0;
+  margin: 10px;
+  height: 50%;
+  width: 50%;
+} */
+#btn-control {
+ margin: 0.5em;
+  border-radius: 50%;
+  border: none;
+  height: 44px;
+  width: 44px;
+  outline: none;
+  background: #7c7c7c2b;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  transition: 0.2s ease-in-out;
+  
+}
+.history-List {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-right: 40px;
+  background: #030317d0;
+  font-weight: bold;
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  width: 10%;
+  font-family: bold;
+
+}
+#btn-control:hover {
+  background: #7c7c7c6b;
+}
+
+.hidden {
+  visibility: hidden;
+}
