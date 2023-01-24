@@ -13,6 +13,7 @@ user's who just wanna check the weather and see when its the best time to take t
 HTML
 CSS
 JavaScript
+Bulma
 
 ## Installation
 
