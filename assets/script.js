@@ -65,7 +65,7 @@ const formSubmitHandler = function (e) {
 // }
 
 const getWeatherForcast = function (lat, lon) {
-  const myApiKey = `http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=7fe7d4a1f624f1850bb25c5e31c57e02`;
+  const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=7fe7d4a1f624f1850bb25c5e31c57e02`;
   console.log(lat, lon);
   language = inputTextContent.value;
   fetch(myApiKey)
@@ -81,7 +81,7 @@ const getWeatherForcast = function (lat, lon) {
           <div class="country-data-2">
           <img
           class="country-img"
-          src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png"
+          src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"
           ></img>
           <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
           <h1 class="dates">${date.toString().substring(0, 16)}</h1>
@@ -105,7 +105,7 @@ const getWeatherForcast = function (lat, lon) {
           "beforeend",
           `
             <div class="country-data-3">
-          <img class="country-img" src="http://openweathermap.org/img/wn/${
+          <img class="country-img" src="https://openweathermap.org/img/wn/${
             day.weather[0].icon
           }.png"></img>
           <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
@@ -126,7 +126,7 @@ const getWeatherForcast = function (lat, lon) {
 };
 
 function getGeolocation(user) {
-  const getMyLatLong = `http://api.openweathermap.org/geo/1.0/direct?q=${user}&limit=1&appid=54f233828acf58994eefa05b9027dd89`;
+  const getMyLatLong = `https://api.openweathermap.org/geo/1.0/direct?q=${user}&limit=1&appid=54f233828acf58994eefa05b9027dd89`;
 
   fetch(getMyLatLong)
     .then((response) => response.json())
