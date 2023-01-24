@@ -1,6 +1,6 @@
 # universal-Forcast
 
-![alt text](./assets/images/Kayhan%20Weather%20App.png)
+![alt text](./assets/images/Kayhan-Weather-App.png)
 
 ## Description
 
