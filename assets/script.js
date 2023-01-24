@@ -28,9 +28,9 @@ const formSubmitHandler = function (e) {
   let language = inputTextContent.value;
   document.body.style.backgroundImage =
     "url('https://source.unsplash.com/2560x1440/?" + language + "')";
-  getGeolocation(language);
   mainContainer.innerHTML = "";
   // Hidden Classes
+  getGeolocation(language);
   container2.classList.remove("hidden");
   hiddenClassStorage.classList.remove("hidden");
 
@@ -45,9 +45,6 @@ const formSubmitHandler = function (e) {
   console.log(gettingName);
   let storageArray = JSON.parse(localStorage.getItem("Searched History")) || [];
   searchHistory.innerHTML = "";
-  // Refactor this code Please
-  // Make functions
-
   for (let index = 0; index < storageArray.length; index++) {
     console.log(storageArray[index]);
     let li = document.createElement("button");
@@ -68,7 +65,7 @@ const formSubmitHandler = function (e) {
 // }
 
 const getWeatherForcast = function (lat, lon) {
-  const myApiKey = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=7fe7d4a1f624f1850bb25c5e31c57e02`;
+  const myApiKey = `http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=7fe7d4a1f624f1850bb25c5e31c57e02`;
   console.log(lat, lon);
   language = inputTextContent.value;
   fetch(myApiKey)
