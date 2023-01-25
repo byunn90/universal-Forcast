@@ -16,6 +16,7 @@ function Objectives() {
   we have to make a local storage everytime we search for a place
   we have to make a box area for the main city/country and that day 
   weather
+  we have to make the history buttons trigger the search when clicked 
   */
 }
 const formSubmitHandler = function (e) {
@@ -45,13 +46,10 @@ const hiddenClasses = function () {
 };
 
 const LocalStorageHistory = function (userInput) {
-  clearLocalStorage();
   const newArray = JSON.parse(localStorage.getItem("Searched History")) || [];
   newArray.push(userInput);
-  const storage = userInput;
   const myKeyValue = "Searched History";
   localStorage.setItem(myKeyValue, JSON.stringify(newArray));
-  // const gettingName = localStorage.getItem(myKeyValue, storage);
   let storageArray = JSON.parse(localStorage.getItem("Searched History")) || [];
   searchHistory.innerHTML = "";
   for (let index = 0; index < storageArray.length; index++) {
@@ -62,7 +60,7 @@ const LocalStorageHistory = function (userInput) {
     searchHistory.appendChild(li);
   }
 };
-const clearLocalStorage = function (e) {};
+
 // let historyButtons = document.querySelectorAll(".historyButton");
 // for (let index = 0; index < historyButtons.length; index++) {
 //   console.log("hi");
