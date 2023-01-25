@@ -37,8 +37,7 @@ body {
   display: flex;
 }
 
-.instructional-message,
-h1 {
+.instructional-message {
   color: white ;
   display: flex;
   justify-content: center;
@@ -93,7 +92,7 @@ display: flex;
 .city-country-temps {
   text-align: center;
   font-size: 10px;
-  padding: 5px;
+  padding: 5px; 
 }
 
 .dates {
@@ -180,11 +179,13 @@ display: flex;
   color: white;
   padding: 2em;
   border-radius: 30px;
-  width: 30%;
   gap: 1px;
   font-family: bold;
 
 }
 #btn-control:hover {
   background: #7c7c7c6b;
+}
+country-img {
+  width: 20px;
 }
