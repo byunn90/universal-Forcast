@@ -1,11 +1,11 @@
 const buttonClick = document.getElementById("btn-control");
-// const textBoxAreaHandler = document.getElementById("text-box");
 const container = document.querySelector(".container-block");
 const container2 = document.querySelector(".container");
 const hiddenClassStorage = document.querySelector(".hidden");
 const unOrderList = document.querySelector("first-data-box");
 const searchHistory = document.querySelector(".history-List");
 let inputTextContent = document.getElementById("text-box");
+let clearMyLocalStorage = document.querySelector(".clear-LocalStorage");
 
 function Objectives() {
   /*
@@ -26,23 +26,32 @@ const formSubmitHandler = function (e) {
     return;
   }
   let language = inputTextContent.value;
-  document.body.style.backgroundImage =
-    "url('https://source.unsplash.com/2560x1440/?" + language + "')";
-  mainContainer.innerHTML = "";
-  // Hidden Classes
+  locationImage(language);
   getGeolocation(language);
-  container2.classList.remove("hidden");
-  hiddenClassStorage.classList.remove("hidden");
+  hiddenClasses();
+  mainContainer.innerHTML = "";
+  LocalStorageHistory(language);
+};
 
-  //
+const locationImage = function (userInput) {
+  document.body.style.backgroundImage =
+    "url('https://source.unsplash.com/2560x1440/?" + userInput + "')";
+};
+
+const hiddenClasses = function () {
+  container2.classList.remove("hidden");
+  searchHistory.classList.remove("hidden");
+  clearMyLocalStorage.classList.remove("hidden");
+};
+
+const LocalStorageHistory = function (userInput) {
+  clearLocalStorage();
   const newArray = JSON.parse(localStorage.getItem("Searched History")) || [];
-  newArray.push(language);
-  const storage = inputTextContent.value;
+  newArray.push(userInput);
+  const storage = userInput;
   const myKeyValue = "Searched History";
   localStorage.setItem(myKeyValue, JSON.stringify(newArray));
-  const gettingName = localStorage.getItem(myKeyValue, storage);
-  console.log(storage);
-  console.log(gettingName);
+  // const gettingName = localStorage.getItem(myKeyValue, storage);
   let storageArray = JSON.parse(localStorage.getItem("Searched History")) || [];
   searchHistory.innerHTML = "";
   for (let index = 0; index < storageArray.length; index++) {
@@ -53,6 +62,7 @@ const formSubmitHandler = function (e) {
     searchHistory.appendChild(li);
   }
 };
+const clearLocalStorage = function (e) {};
 // let historyButtons = document.querySelectorAll(".historyButton");
 // for (let index = 0; index < historyButtons.length; index++) {
 //   console.log("hi");
@@ -78,22 +88,22 @@ const getWeatherForcast = function (lat, lon) {
         container2.insertAdjacentHTML(
           "beforeend",
           `
-          <div class="country-data-2">
-          <img
-          class="country-img"
-          src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"
-          ></img>
-          <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
-          <h1 class="dates">${date.toString().substring(0, 16)}</h1>
-          <h2 class="city-country-temps">
-          temp: ${(day.feels_like.day - 273.15).toFixed(1)}°C
-          </h2>
-          <h2 class="wind-speed">
-          Wind: ${(day.wind_speed * 2.23694).toFixed(1)} MPH
-          </h2>
-          <h2 class="humidity">Humidity: ${day.humidity}%</h2>
-          </div>
-          `
+            <div class="country-data-2">
+            <img
+            class="country-img"
+            src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png"
+            ></img>
+            <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
+            <h1 class="dates">${date.toString().substring(0, 16)}</h1>
+            <h2 class="city-country-temps">
+            temp: ${(day.feels_like.day - 273.15).toFixed(1)}°C
+            </h2>
+            <h2 class="wind-speed">
+            Wind: ${(day.wind_speed * 2.23694).toFixed(1)} MPH
+            </h2>
+            <h2 class="humidity">Humidity: ${day.humidity}%</h2>
+            </div>
+            `
         );
         console.log(day);
       });
@@ -104,22 +114,22 @@ const getWeatherForcast = function (lat, lon) {
         container.insertAdjacentHTML(
           "beforeend",
           `
-            <div class="country-data-3">
-          <img class="country-img" src="https://openweathermap.org/img/wn/${
-            day.weather[0].icon
-          }.png"></img>
-          <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
-          <h1 class="dates">${date.toString().substring(0, 16)}</h1>
-          <h2 class="city-country-temps">temp: ${(
-            day.feels_like.day - 273.15
-          ).toFixed(1)}°C</h2>  
-          <h2 class="wind-speed">Wind: ${(day.wind_speed * 2.23694).toFixed(
-            1
-          )} MPH</h2>
-          <h2 class="humidity">Humidity: ${day.humidity}%</h2>
+              <div class="country-data-3">
+              <img class="country-img" src="https://openweathermap.org/img/wn/${
+                day.weather[0].icon
+              }.png"></img>
+              <h1>${language.charAt(0).toUpperCase() + language.slice(1)}</h1>
+              <h1 class="dates">${date.toString().substring(0, 16)}</h1>
+              <h2 class="city-country-temps">temp: ${(
+                day.feels_like.day - 273.15
+              ).toFixed(1)}°C</h2>  
+                <h2 class="wind-speed">Wind: ${(
+                  day.wind_speed * 2.23694
+                ).toFixed(1)} MPH</h2>
+                  <h2 class="humidity">Humidity: ${day.humidity}%</h2>
           </div>
-
-        `
+          
+          `
         );
       });
     });
@@ -138,22 +148,10 @@ function getGeolocation(user) {
       }
     });
 }
-
 buttonClick.addEventListener("click", formSubmitHandler);
-// const checkingTwo = function () {
-//   const lat = -37.8142176;
-//   const lon = 144.9631608;
-//   const days = 6;
-//   myApi = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=days&appid=54f233828acf58994eefa05b9027dd89`;
-
-//   fetch(myApi)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       let newThing = Date.now(res.daily[2].dt);
-//       newThing = Math.round(Date.now(res.daily[0].dt) / 1000);
-//       newThing = new Date().getTime() / 1000;
-//       console.log(newThing);
-//       console.log(res);
-//     });
-// };
-// checkingTwo();
+clearMyLocalStorage.addEventListener("click", function () {
+  searchHistory.innerHTML = "";
+  localStorage.clear();
+  searchHistory.classList.add("hidden");
+  clearMyLocalStorage.classList.add("hidden");
+});
