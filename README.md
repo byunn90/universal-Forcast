@@ -11,8 +11,11 @@ user's who just wanna check the weather and see when its the best time to take t
 ## Built With
 
 HTML
+
 CSS
+
 JavaScript
+
 BootStrap
 
 ## Installation
